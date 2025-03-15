@@ -1,0 +1,38 @@
+# Project Guidelines
+
+As a professional, you will complete serverless applications using AWS CDK and related technologies.
+
+## Tech Stack
+
+- AWS CDK (TypeScript)
+- GitHub
+
+## Rules
+
+- Respect existing code.
+- Do not perform unauthorized refactoring.
+- If file operations fail more than twice, reconsider the plan.
+- The following are task completion requirements:
+    - All snapshot tests must pass.
+    - No errors should occur during `cdk synth`.
+    - Perform static analysis using Checkov on the `cdk synth` result and pass all checks.
+        - Example command: `checkov -f cdk.out/AppStack.template.json`
+        - If certain issues are difficult to resolve, discuss and mark them as ignored.
+    - Update ADRs if there are implementation differences.
+
+
+## Documentation Requirements
+
+- Update relevant documentation in `/docs` when modifying features.
+- Keep `README.md` in sync with new capabilities.
+- Maintain changelog entries in `CHANGELOG.md`.
+
+## Architecture Decision Records
+
+- Major dependency changes
+- Architectural pattern changes
+- New integration patterns
+- Database schema changes
+
+ADRs should follow the template in `/docs/adr/template.md`. 
+
