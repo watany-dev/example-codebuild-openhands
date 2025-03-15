@@ -17,6 +17,10 @@
     ]
   },
   "context": {
+    "codestar_connection_arn": "arn:aws:codestar-connections:us-east-1:123456789012:connection/example-id",
+    "github_owner": "your-organization",
+    "github_repo": "your-repository",
+    "github_branch": "main",
     "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
     "@aws-cdk/core:checkSecretUsage": true,
     "@aws-cdk/core:target-partitions": [

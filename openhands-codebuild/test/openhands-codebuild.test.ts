@@ -1,17 +1,32 @@
-// import * as cdk from 'aws-cdk-lib';
-// import { Template } from 'aws-cdk-lib/assertions';
-// import * as OpenhandsCodebuild from '../lib/openhands-codebuild-stack';
+import * as cdk from 'aws-cdk-lib';
+import { Template } from 'aws-cdk-lib/assertions';
+import * as OpenhandsCodebuild from '../lib/openhands-codebuild-stack';
 
-// example test. To run these tests, uncomment this file along with the
-// example resource in lib/openhands-codebuild-stack.ts
-test('SQS Queue Created', () => {
-//   const app = new cdk.App();
-//     // WHEN
-//   const stack = new OpenhandsCodebuild.OpenhandsCodebuildStack(app, 'MyTestStack');
-//     // THEN
-//   const template = Template.fromStack(stack);
+test('CodeBuild Project Created', () => {
+  const app = new cdk.App();
+  // WHEN
+  const stack = new OpenhandsCodebuild.OpenhandsCodebuildStack(app, 'MyTestStack');
+  // THEN
+  const template = Template.fromStack(stack);
 
-//   template.hasResourceProperties('AWS::SQS::Queue', {
-//     VisibilityTimeout: 300
-//   });
+  // Verify CodeBuild project is created
+  template.resourceCountIs('AWS::CodeBuild::Project', 1);
+  
+  // Verify IAM role and policies are created
+  template.hasResourceProperties('AWS::IAM::Role', {
+    AssumeRolePolicyDocument: {
+      Statement: [
+        {
+          Action: 'sts:AssumeRole',
+          Effect: 'Allow',
+          Principal: {
+            Service: 'codebuild.amazonaws.com'
+          }
+        }
+      ]
+    }
+  });
+  
+  // Verify output is created
+  template.hasOutput('CodeBuildProjectArn', {});
 });
