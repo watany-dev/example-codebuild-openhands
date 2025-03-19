@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/openhands-codebuild.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/sample-app.ts",
   "watch": {
     "include": [
       "**"
@@ -17,10 +17,6 @@
     ]
   },
   "context": {
-    "codestar_connection_arn": "arn:aws:codestar-connections:us-east-1:123456789012:connection/example-id",
-    "github_owner": "watany-dev",
-    "github_repo": "mohua",
-    "github_branch": "main",
     "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
     "@aws-cdk/core:checkSecretUsage": true,
     "@aws-cdk/core:target-partitions": [
