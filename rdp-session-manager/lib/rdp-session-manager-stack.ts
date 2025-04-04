@@ -108,7 +108,7 @@ export class RdpSessionManagerStack extends cdk.Stack {
     });
 
     new cdk.CfnOutput(this, 'RDPCommand', {
-      value: `aws ssm start-session --target ${instance.instanceId} --document-name AWS-StartPortForwardingSession --parameters "portNumber=3389,localPortNumber=13389"`,
+      value: `aws ssm start-session --target ${instance.instanceId} --document-name AWS-StartPortForwardingSession --parameters "portNumber=3389, localPortNumber=13389"`,
       description: 'Command to start RDP port forwarding session',
     });
   }
